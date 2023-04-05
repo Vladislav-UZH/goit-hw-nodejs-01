@@ -101,14 +101,14 @@ const removeContact = async (id) => {
   try {
     const contacts = await readContacts();
     console.log("Started deleting your contact!");
-    const filtred = contacts.filter((contact) => contact.id !== id);
-    if (contacts.length === filtred.length) {
+    const filtered = contacts.filter((contact) => contact.id !== id);
+    if (contacts.length === filtered.length) {
       return console.log(
         chalk.red("Failed! There are no contacts to match your request!")
       );
     }
 
-    const updatedContacts = JSON.stringify(filtred);
+    const updatedContacts = JSON.stringify(filtered);
     await fs.writeFile(contactsPath, updatedContacts, encoding);
     console.log(chalk.green("Success! The contact has been deleted!"));
     return;
